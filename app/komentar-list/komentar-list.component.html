@@ -1,0 +1,13 @@
+<div class="row" style="background-color:#43b7ff;">
+  <div class="col-xs-10">
+    <app-komentar-edit></app-komentar-edit>
+    <hr>
+    <ul class="list-group">
+      <a class="list-group-item" style="cursor:pointer"
+      *ngFor="let fasilitas of fasilitass; let i = index"
+      (click)="onEditItem(i)">
+    {{fasilitas.perlengkapan}} ({{fasilitas.jumlah}})
+    </a>
+    </ul>
+  </div>
+</div>

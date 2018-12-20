@@ -1,0 +1,72 @@
+<div class="row">
+  <div class="col-xs-12">
+    <form [formGroup]="kostForm" (ngSubmit)="onSubmit()">
+      <div class="row">
+        <div class="col-xs-12">
+          <button type="submit" class="btn btn-success" [disabled]="!kostForm.valid">Save</button>
+          <button type="button" class="btn btn-danger" (click)="onCancel()" >Cancel</button>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text"
+            id="name" 
+            formControlName="name"
+            class="form-control">
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group">
+            <label for="imagePath">Image URL</label>
+            <input type="text" id="imagePath"  formControlName="imagePath" class="form-control"
+            #imagePath>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <img [src]="imagePath.value" class="img-responsive">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group">
+            <label for="description">Description</label>
+            <textarea type="text" id="description" class="form-control" formControlName="description" rows="6"></textarea>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12" formArrayName="fasilitass">
+          <div class="row" 
+          *ngFor="let fasilitasCtrl of kostForm.get('fasilitass').controls; let i= index"
+          [formGroupName]="i"
+          style="margin-top: 10px;">
+            <div class="col-xs-8">
+                <input type="text"  class="form-control"
+                formControlName="perlengkapan">
+            </div>
+            <div class="col-xs-2">
+                <input type="number"  class="form-control"
+                formControlName="jumlah">
+            </div>
+            <div class="col-xs-2">
+                <button class="btn btn-danger"
+                (click)="onDeleteFasilitas(i)">x</button>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-12">
+              <hr>
+              <button type="button" class="btn btn-success" (click)="onAddFasilitas()">Tambahkan Fasilitas</button>
+            </div>
+          </div>
+         </div>
+      </div>
+    </form>
+  </div>
+</div>

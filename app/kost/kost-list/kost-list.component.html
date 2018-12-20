@@ -1,0 +1,8 @@
+<div class="row">
+    <div class="col-xs-12">
+        <app-kost-item 
+        *ngFor="let kostEL of kosts; let i = index"
+        [kost]="kostEL"
+        [index]="i"></app-kost-item>
+    </div>
+</div>
